@@ -1,0 +1,7 @@
+// App Configuration Constants
+export const APP_NAME = "MediShare";
+export const COMPANY_NAME = "MediShare Pharmaceuticals";
+export const DOMAIN = "medishare.com";
+export const BASE_URL = "http://medishare:8000"; // Development server URL
+export const PROD_URL = "https://www.medishare.com"; // Production URL
+export const SUPPORT_EMAIL = "support@medishare.com";
