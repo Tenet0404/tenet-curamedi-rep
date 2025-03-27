@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | MediShare</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+    <header class="bg-white shadow-sm py-4">
+        <div class="container mx-auto px-4 flex items-center justify-between">
+            <a href="index.html" class="flex items-center">
+                <div class="bg-blue-600 p-3 rounded-lg mr-4">
+                    <i class="fas fa-pills text-2xl text-white"></i>
+                </div>
+                <h1 class="text-2xl font-bold text-gray-800">MediShare</h1>
+            </a>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="about.html" class="text-blue-600 font-medium">About</a>
+                <a href="contact.html" class="text-gray-600 hover:text-blue-600 transition">Contact</a>
+                <a href="selection.html" class="bg-blue-600 text-white px-5 py-2 rounded-lg font-medium hover:bg-blue-700 transition">
+                    Get Started
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-12">
+        <section class="mb-16">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                         alt="Medicine waste" 
+                         class="w-full rounded-xl shadow-lg">
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-6">Our Mission</h2>
+                    <p class="text-lg text-gray-600 mb-6">
+                        Millions of medicines are wasted due to bulk sales, costing patients money, harming the environment, 
+                        and leaving unused pills with no resale value. Many people struggle to afford essential medications.
+                    </p>
+                    <p class="text-lg text-gray-600 mb-6">
+                        MediShare is a secure platform for reselling verified unused medicines, ensuring affordability, 
+                        authenticity, and safety. By reducing waste and promoting sustainability, we enhance healthcare 
+                        access while making medications more available to those in need.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-blue-50 rounded-2xl p-12 mb-16">
+            <h2 class="text-3xl font-bold text-center mb-12">How We Make a Difference</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-recycle text-blue-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Reduce Waste</h3>
+                    <p class="text-gray-600">Preventing millions of unused medicines from going to waste annually</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-hand-holding-heart text-blue-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Affordable Care</h3>
+                    <p class="text-gray-600">Making medications 30-50% more affordable for those in need</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-shield-alt text-blue-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Verified Safety</h3>
+                    <p class="text-gray-600">Rigorous verification process for all medicines on our platform</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2025 MediShare. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

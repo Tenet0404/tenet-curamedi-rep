@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Dashboard | MediShare</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+    <header class="bg-white shadow-sm py-4">
+        <div class="container mx-auto px-4 flex items-center justify-between">
+            <a href="index.html" class="flex items-center">
+                <div class="bg-blue-600 p-3 rounded-lg mr-4">
+                    <i class="fas fa-pills text-2xl text-white"></i>
+                </div>
+                <h1 class="text-2xl font-bold text-gray-800">MediShare</h1>
+            </a>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="about.html" class="text-gray-600 hover:text-blue-600 transition">About</a>
+                <a href="contact.html" class="text-gray-600 hover:text-blue-600 transition">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold text-center mb-6">Your Listed Medicines</h2>
+            
+            <div class="mb-8">
+                <a href="medicine-upload.html" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition inline-block">
+                    <i class="fas fa-plus mr-2"></i> Add New Medicine
+                </a>
+            </div>
+
+            <div class="border rounded-lg p-4">
+                <p class="text-gray-600 text-center">You haven't listed any medicines yet</p>
+            </div>
+        </div>
+    </main>
+
+    <script type="module">
+        import { db, auth, medicines } from './firebase-config.js';
+        
+        async function loadMedicines() {
+            try {
+                const user = auth.currentUser;
+                if (!user) return;
+                
+                const querySnapshot = await medicines
+                    .where('sellerId', '==', user.uid)
+                    .orderBy('createdAt', 'desc')
+                    .get();
+                
+                const medicinesList = document.getElementById('medicinesList');
+                medicinesList.innerHTML = '';
+                
+                if (querySnapshot.empty) {
+                    medicinesList.innerHTML = '<p class="text-gray-600 text-center">You haven\'t listed any medicines yet</p>';
+                    return;
+                }
+                
+                querySnapshot.forEach(doc => {
+                    const medicine = doc.data();
+                    const medicineItem = `
+                        <div class="border rounded-lg p-4 mb-4">
+                            <h3 class="font-bold">${medicine.name}</h3>
+                            <p class="text-gray-600">Expiry: ${new Date(medicine.expiry).toLocaleDateString()}</p>
+                            <p class="text-gray-600">Status: ${medicine.status}</p>
+                            <p class="text-gray-600">Listed: ${new Date(medicine.createdAt?.toDate()).toLocaleString()}</p>
+                        </div>
+                    `;
+                    medicinesList.innerHTML += medicineItem;
+                });
+                
+            } catch (error) {
+                console.error("Error loading medicines:", error);
+            }
+        }
+        
+        // Initialize
+        auth.onAuthStateChanged(user => {
+            if (user) loadMedicines();
+            else window.location.href = 'login.html';
+        });
+    </script>
+</body>
+</html>
